@@ -25,9 +25,10 @@ public class Zadanie implements Runnable {
         }
     }
 
-    public synchronized void anuluj(){
+    public synchronized boolean anuluj(){
         thread.interrupt();
         System.out.println("Zadanie o id " + this.id + " zostalo anulowane");
+        return true;
     }
 
     public synchronized Thread.State getStan() {
