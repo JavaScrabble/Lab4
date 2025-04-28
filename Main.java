@@ -7,13 +7,12 @@ public class Main {
 
         List<Zadanie> zadania = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
-        int id = 0;
+        int id = -1;
 
         while (true) {
             System.out.println("\nMenu:");
             System.out.println("1. Stwórz zadanie");
             System.out.println("2. Pokaż stan zadań");
-            //System.out.println("3. Pokaż wyniki zadań");
             System.out.println("3. Anuluj zadanie");
             System.out.println("0. Wyjdź");
 
@@ -29,27 +28,15 @@ public class Main {
                 case "2":
                     for (int i = 0; i < zadania.size(); i++) {
                        Zadanie z = zadania.get(i);
-                        z.getStan();
+                        System.out.println(z.getStan());
                     }
                     break;
 
-//                case "3":
-//                    for (int i = 0; i < zadania.size(); i++) {
-//                        Future<Long> f = zadania.get(i);
-//                        if (f.isDone() && !f.isCancelled()) {
-//                            try {
-//                                System.out.println("Zadanie " + i + ": wynik = " + f.get());
-//                            } catch (Exception e) {
-//                                System.out.println("Zadanie " + i + ": błąd podczas pobierania wyniku.");
-//                            }
-//                        }
-//                    }
-//                    break;
-
                 case "3":
-                    System.out.print("Podaj indeks zadania do anulowania: ");
+                    System.out.print("Podaj id zadania do anulowania: ");
                     int idx = Integer.parseInt(scanner.nextLine());
-                    if (idx >= 0 && idx < zadania.size()) {
+
+                    if (idx >= 0 && idx <= zadania.size()) {
                         boolean czyAnulowane = zadania.get(idx).anuluj();
                         if (czyAnulowane) {
                             System.out.println("Zadanie anulowane");
